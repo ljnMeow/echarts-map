@@ -89,7 +89,6 @@
               obj[historyList[i].code] = true;
             }
           }
-          console.log(result);
           historyList = result;
         }
       }, 250);
@@ -98,11 +97,12 @@
     mapEcharts.on("dblclick", (params) => {
       // 当双击事件发生时，清除单击事件，仅响应双击事件
       clearTimeout(timeFn);
-      let map = historyList.pop();
       if (historyList.length == 1) {
         alert("已经到达最上一级地图了");
         return;
       }
+      let map = historyList.pop();
+      console.log(historyList[historyList.length - 1])
       if (historyList[historyList.length - 1].code == "china") {
         initMap(china, "china", "中国");
       } else {
